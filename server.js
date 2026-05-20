@@ -9,7 +9,12 @@ const user_model = require("./models/user_model");
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://tropical-iot.vercel.app"
+  ],
+  credentials: true
+}))
 app.use(express.json());
 
 
@@ -75,7 +80,7 @@ app.post("/api/device", async (req, res) => {
 
 // GET ROUTE
 
-app.get("/api/device", async (req, res) => {
+app.get("https://iot-backend-ksmm.onrender.com/api/device", async (req, res) => {
   try {
 
     // Get latest command
@@ -109,7 +114,7 @@ app.get("/api/device", async (req, res) => {
 });
 
 //SIGNUP ROUTE
-app.post("/api/signup", async (req, res) => {
+app.post("https://iot-backend-ksmm.onrender.com/api/signup", async (req, res) => {
 
   try {
 
@@ -156,7 +161,7 @@ app.post("/api/signup", async (req, res) => {
 
 
 //LOGIN ROUTE
-app.post("/api/login", async (req, res) => {
+app.post("https://iot-backend-ksmm.onrender.com/api/login", async (req, res) => {
 
   try {
 
@@ -202,7 +207,7 @@ app.post("/api/login", async (req, res) => {
 
 let lastSeen = null;
 
-app.post("/api/device/heartbeat", (req, res) => {
+app.post("https://iot-backend-ksmm.onrender.com/api/device/heartbeat", (req, res) => {
 
   lastSeen = Date.now();
 
